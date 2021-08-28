@@ -1,0 +1,26 @@
+{% extends "misc/base.html" %}
+{% block title %}Игра Джанго Хакатон{% endblock %}
+{% block header %}Игра Джанго Хакатон{% endblock %}
+{% block content %}
+  <div class="container">
+
+    {% for person in page %}
+      {{ person.name_class }} <br>
+
+      <a class="p-2 text" href="{% url 'person_detail' person.id %}">
+        {{ person.name }}
+        {{ person.nick_name }}<br>
+      </a>
+      <a>
+      Сила: {{ person.hero_strength }}<br>
+      Выносливость: {{ person.hero_stamina }}<br>
+      Защита: {{ person.hero_armor }}
+
+      </a>
+    <hr>
+    {% endfor %}
+
+
+
+  </div>
+{% endblock %}
