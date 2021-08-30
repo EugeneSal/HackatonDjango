@@ -2,46 +2,37 @@
 {% block title %}Игра Джанго Хакатон{% endblock %}
 {% block header %}Игра Джанго Хакатон{% endblock %}
 {% block content %}
-  <div class="container" xmlns="http://www.w3.org/1999/html">
+  <div class="container">
 
-    <p>{{ person.name}} {{ person.nick_name }}</p>
-    <p>Сила: {{ person.hero_strength }}
-       Выносливость: {{ person.hero_stamina }}
-       Защита: {{ person.hero_armor }}</p>
+    <p>{{ person.name }} {{ person.nick_name }}</p>
+    <p>
+      Сила: {{ person.hero_strength }}
+      Выносливость: {{ person.hero_stamina }}
+      Защита: {{ person.hero_armor }}
+    </p>
     <hr>
-    Инвентарь:<br>
-   <form method="post">
+    Инвентарь:
+    <br>
+    {{ thing }}
 
-    {% for thing in things %}
-{#  <form action="{% url 'use' person.id thing.id %}" method="post">#}
-  {% csrf_token %}
-{##}
-{#      <div class="form-check form-check-inline"> {{ thing }}#}
-{#<input class="form-check-input" type="ToggleButton" id="inlineCheckbox1" value="1">#}
-{#<label class="form-check-label"></label>#}
-{#</div>#}
-{##}
-{#<input type="checkbox" class="form-check-input" href="{% url 'use' person.id thing.id %}"#}
-{#        data-toggle="button" aria-pressed="false">#}
-{#            Single#}
-{#</input>#}
-<label>
-  <input class="checkbox" type="checkbox" href="{% url 'use' person.id thing.id %}">
-  <span class="fake-checkbox"></span> {{ thing }}
-</label>
-{#      <div class="checkbox-row">{{ thing }}#}
-{#        <input type="checkbox">#}
-{#        <label class="CheckboxLabel" for="id_used">Used</label>#}
-{#      </div>#}
-{# name="used" id="id_used"#}
-      Защита: {{ thing.thing_armor }}   Выносливость:
+    {% for thing in things %} {{ thing }}
+
+      Защита:
+      {{ thing.thing_armor }}
+      Выносливость:
       {{ thing.thing_stamina }}
-      Сила: {{ thing.thing_strength }}
+      Сила:
+      {{ thing.thing_strength }}
 
-<hr>
+      {% if thing.used %}
+        <a href="{% url 'take_off' person.id thing.id %}" role="button">
+          <i class="fa fa-check-square-o" aria-hidden="true"></i></a>
+      {% else %}
+        <a href="{% url 'put_on' person.id thing.id %}" role="button">
+          <i class="fa fa-square-o" aria-hidden="true"></i></a>
+      {% endif %}
+      <hr>
     {% endfor %}
-  <button type="submit">Одеть</button>
-</form>
 
   </div>
 {% endblock %}
