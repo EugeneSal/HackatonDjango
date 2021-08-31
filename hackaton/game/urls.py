@@ -14,4 +14,10 @@ urlpatterns = [
          name='choice_the_pair'),
     path('arena/<int:hero1_id>/<int:hero2_id>/', arena,
          name='arena'),
+    path('create_paladin/', create_paladin,
+         name='create_paladin'),
+    path('create_warrior/', create_warrior,
+         name='create_warrior'),
+    path('create_druid/', create_druid,
+         name='create_druid'),
 ]

@@ -12,8 +12,23 @@
             </div>
           </div>
         {% endfor %}
-
-
+      </div>
+      <div class="row row-cols-1 row-cols-sm3 row-cols-md2">
+        <a class="ml-5 font-weight-bold">Ход сражения:</a>
+        <div class="card mb-9 mt-7 mt-1 shadow-sm ">
+          {% for log in logs %}
+            {% if log == 'Критический удар' %}
+              <a class="ml-2 alert alert-danger mt-1 mb-0">{{ log }}</a>
+            {% elif log == 'Искусно блокирует' %}
+              <a class="ml-2 alert alert-danger mt-1 mb-0">{{ log }}</a>
+            {% else %}
+              <a class="ml-2 alert alert-primary mt-1 mb-0">{{ log }}</a>
+            {% endif %}
+          {% endfor %}
+          {% for log in win_log %}
+            <a class="ml-2 alert alert-danger mt-1 mb-0">{{ log }}</a>
+          {% endfor %}
+        </div>
       </div>
     </div>
   </div>

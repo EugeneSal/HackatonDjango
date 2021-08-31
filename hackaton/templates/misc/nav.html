@@ -1,29 +1,37 @@
 <head>
-{% load static %}
-{#   <link rel="stylesheet" href="{% static 'posts/style.css' %}">#}
+  {% load static %}
+  {#   <link rel="stylesheet" href="{% static 'posts/style.css' %}">#}
 </head>
 <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
   <a class="navbar-brand" href="/"><span style="color:red">Dja</span>ckaton</a>
 
   <nav class="my-2 my-md-0 mr-md-3">
-{#    {% if user.is_authenticated %}#}
-{#     <div class="dropdown">#}
-{#     <button class="btn btn dropdown-toggle" type="button" id="dropdownMenuButton"#}
-{#             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user.username }}</button>#}
-{#       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">#}
-{#         <a class="p-2 text-dark dropdown-item"#}
-{#                      href="{% url 'edit' %}">Изменить профиль</a>#}
-{#         <a class="p-2 text-dark dropdown-item"#}
-{#                      href="{% url 'profile' user.username %}">Просмотр профиля</a>#}
-{#        <a class="p-2 text-dark dropdown-item" href="{% url 'password_change' %}">Изменить#}
-{#        пароль</a>#}
-{#      </div>#}
-      <a class="p-2 text-dark" href="{% url 'choice_the_pair' %}">Выбрать пару для схватки</a>
-      <a class="p-2 text-dark" href="{% url 'index' %}">Показать героев</a>
-{#    {% else %}#}
-{#      <a class="p-2 text-dark" href="{% url 'login' %}">Войти</a> |#}
-{#      <a class="p-2 text-dark" href="{% url 'signup' %}">Регистрация</a>#}
-{#    {% endif %}#}
-{#       </div>#}
+    {#    {% if user.is_authenticated %}#}
+    {#     <div class="dropdown">#}
+    {#     <button class="btn btn dropdown-toggle" type="button" id="dropdownMenuButton"#}
+    {#             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user.username }}</button>#}
+    {#       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">#}
+    {#         <a class="p-2 text-dark dropdown-item"#}
+    {#                      href="{% url 'edit' %}">Изменить профиль</a>#}
+    {#         <a class="p-2 text-dark dropdown-item"#}
+    {#                      href="{% url 'profile' user.username %}">Просмотр профиля</a>#}
+    {#        <a class="p-2 text-dark dropdown-item" href="{% url 'password_change' %}">Изменить#}
+    {#        пароль</a>#}
+    {#      </div>#}
+    <a class="p-2 text-dark" href="{% url 'choice_the_pair' %}">Выбрать пару для
+      схватки</a>
+    <a class="p-2 text-dark" href="{% url 'index' %}">Показать героев</a>
+    <a class="p-2 text-dark" href="{% url 'create_paladin' %}">Создать
+      Паладина</a>
+    <a class="p-2 text-dark" href="{% url 'create_warrior' %}">Создать
+      Воина</a>
+     <a class="p-2 text-dark" href="{% url 'create_druid' %}">Создать
+      Друида</a>
+
+    {#    {% else %}#}
+    {#      <a class="p-2 text-dark" href="{% url 'login' %}">Войти</a> |#}
+    {#      <a class="p-2 text-dark" href="{% url 'signup' %}">Регистрация</a>#}
+    {#    {% endif %}#}
+    {#       </div>#}
   </nav>
 </nav>
