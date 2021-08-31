@@ -8,9 +8,13 @@ class Heroes(models.Model):
     hero_strength = models.IntegerField(default=40)
     hero_stamina = models.IntegerField(default=80)
     hero_armor = models.IntegerField(default=30)
+    hp = models.IntegerField(default=1000)
 
     class Meta:
         ordering = ('name_class',)
+
+    def __str__(self):
+        return f'{self.name_class} {self.name} {self.nick_name}'
 
 
 class Paladin(Heroes):

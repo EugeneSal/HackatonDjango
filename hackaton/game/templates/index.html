@@ -3,24 +3,28 @@
 {% block header %}Игра Джанго Хакатон{% endblock %}
 {% block content %}
   <div class="container">
+    <div class="row row-cols-1 row-cols-sm2 row-cols-md4">
+      <div class="row row-cols-3">
+        {% for person in page %}
+          <div class="card mb-9 mt-2 shadow-sm">
+            <div class="card-body">
+              {{ person.name_class }} <br>
 
-    {% for person in page %}
-      {{ person.name_class }} <br>
+              <a class="p-1 text" href="{% url 'person_detail' person.id %}">
+                {{ person.name }}
+                {{ person.nick_name }}<br>
+              </a>
+              <a>
+                Сила: {{ person.hero_strength }}<br>
+                Выносливость: {{ person.hero_stamina }}<br>
+                Защита: {{ person.hero_armor }}<br>
+                Здоровье: {{ person.hp }}
 
-      <a class="p-2 text" href="{% url 'person_detail' person.id %}">
-        {{ person.name }}
-        {{ person.nick_name }}<br>
-      </a>
-      <a>
-      Сила: {{ person.hero_strength }}<br>
-      Выносливость: {{ person.hero_stamina }}<br>
-      Защита: {{ person.hero_armor }}
-
-      </a>
-    <hr>
-    {% endfor %}
-
-
-
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
   </div>
 {% endblock %}

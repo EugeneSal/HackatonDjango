@@ -9,5 +9,9 @@ urlpatterns = [
     path('detail/<int:hero_id>/', person_detail,
          name='person_detail'),
     path('', index,
-         name='index')
+         name='index'),
+    path('choice/', choice_the_pair,
+         name='choice_the_pair'),
+    path('arena/<int:hero1_id>/<int:hero2_id>/', arena,
+         name='arena'),
 ]
