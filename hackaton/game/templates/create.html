@@ -1,7 +1,11 @@
-{% extends "misc/base.html" %}
+{% extends "core/base.html" %}
 {% block title %}
-  {% if hero == True %}
-    Создать персонажа
+  {% if paladin == True %}
+    Создать Паладина
+  {% elif warrior == True %}
+    Создать Воина
+  {% elif druid == True %}
+    Создать Друида
   {% else %}
     Создать Предмет
   {% endif %}
@@ -12,8 +16,12 @@
       <div class="col-md-7 mb-3 mt-1">
         <div class="card">
           <div class="card-header">
-            {% if hero == True %}
-              Создать персонажа
+            {% if paladin == True %}
+              Создать Паладина
+            {% elif warrior == True %}
+              Создать Воина
+            {% elif druid == True %}
+              Создать Друида
             {% else %}
               Создать Предмет
             {% endif %}
@@ -41,8 +49,12 @@
               {% endfor %}
               <div class="col-md-6 offset-md-8 mr-1">
                 <button type="submit" class="btn btn-primary ml-1 mr-1">
-                  {% if hero == True %}
-                    Создать персонажа
+                  {% if paladin == True %}
+                    Создать Паладина
+                  {% elif warrior == True %}
+                    Создать Воина
+                  {% elif druid == True %}
+                    Создать Друида
                   {% else %}
                     Создать Предмет
                   {% endif %}

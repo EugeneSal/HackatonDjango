@@ -49,7 +49,7 @@ def create_paladin(request):
     form = PaladinForm(request.POST or None)
     if request.method == 'GET' or not form.is_valid():
         return render(request, 'create.html',
-                      {'form': form, 'hero': True})
+                      {'form': form, 'paladin': True})
     paladin = form.save(commit=False)
     paladin.hero_stamina = paladin.default_stamina
     paladin.hero_armor = paladin.default_armor
@@ -63,7 +63,7 @@ def create_druid(request):
     form = DruidForm(request.POST or None)
     if request.method == 'GET' or not form.is_valid():
         return render(request, 'create.html',
-                      {'form': form, 'hero': True})
+                      {'form': form, 'druid': True})
     druid = form.save(commit=False)
     druid.hero_stamina = druid.default_stamina
     druid.hero_armor = druid.default_armor
@@ -77,7 +77,7 @@ def create_warrior(request):
     form = WarriorForm(request.POST or None)
     if request.method == 'GET' or not form.is_valid():
         return render(request, 'create.html',
-                      {'form': form, 'hero': True})
+                      {'form': form, 'warrior': True})
     warrior = form.save(commit=False)
     warrior.hero_stamina = warrior.default_stamina
     warrior.hero_armor = warrior.default_armor
@@ -91,7 +91,7 @@ def create_things(request):
     form = ThingsForm(request.POST or None)
     if request.method == 'GET' or not form.is_valid():
         return render(request, 'create.html',
-                      {'form': form, 'hero': False})
+                      {'form': form, 'things': True})
     thing = form.save(commit=False)
     thing.save()
     return redirect('index')

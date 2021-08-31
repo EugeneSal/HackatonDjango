@@ -1,0 +1,28 @@
+<head>
+  {% load static %}
+</head>
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <a class="navbar-brand" href="/"><span style="color:red">Dja</span>ckaton</a>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <div class="dropdown">
+      <button class="btn btn dropdown-toggle" type="button"
+              id="dropdownMenuButton"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Создать
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="p-2 text-dark dropdown-item"
+           href="{% url 'create_paladin' %}">Паладина</a>
+        <a class="p-2 text-dark dropdown-item"
+           href="{% url 'create_warrior' %}">Воина</a>
+        <a class="p-2 text-dark dropdown-item"
+           href="{% url 'create_druid' %}">Друида</a>
+        <a class="p-2 text-dark dropdown-item"
+           href="{% url 'create_things' %}">Предмет</a>
+      </div>
+
+      <a class="p-2 text-dark" href="{% url 'choice_the_pair' %}">
+        Выбрать пару для схватки</a>
+      <a class="p-2 text-dark" href="{% url 'index' %}">Показать героев</a>
+  </nav>
+</nav>
