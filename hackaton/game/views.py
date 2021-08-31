@@ -107,7 +107,10 @@ def person_detail(request, hero_id):
 
 
 def choice_the_pair(request):
-    person_list = Heroes.objects.all()
+    p_l = Heroes.objects.all()
+    person_list = Heroes.objects.filter(alive=True)
+    print(person_list)
+    print(p_l)
     list_person = []
     if len(person_list) < 2:
         return redirect('index')
@@ -160,6 +163,8 @@ def arena(request, hero1_id, hero2_id):
         battle_log.append(f'У {defender} {round(defender.hp)} '
                           f'осталось пунктов жизни')
         if defender.hp < 0:
+            defender.alive = 0
+            defender.save()
             break
     win_log.append(f'{defender} умирает --- победил {attacker}')
     win_log.append(f'У {attacker} осталось {round(attacker.hp)} жизни')

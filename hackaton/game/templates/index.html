@@ -18,7 +18,10 @@
                 Сила: {{ person.hero_strength }}<br>
                 Выносливость: {{ person.hero_stamina }}<br>
                 Защита: {{ person.hero_armor }}<br>
-                Здоровье: {{ person.hp }}
+                Здоровье: {{ person.hp }}<br>
+                Статус: {% if person.alive %} Живой
+                {% else %} Погиб
+                {% endif %}
 
               </a>
             </div>
