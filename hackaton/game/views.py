@@ -54,6 +54,7 @@ def create_paladin(request):
     paladin.hero_stamina = paladin.default_stamina
     paladin.hero_armor = paladin.default_armor
     paladin.hero_strength = paladin.default_strength
+    paladin.hp = paladin.hero_stamina * 40
     paladin.name_class = 'Паладин'
     paladin.save()
     return redirect('index')
@@ -68,6 +69,7 @@ def create_druid(request):
     druid.hero_stamina = druid.default_stamina
     druid.hero_armor = druid.default_armor
     druid.hero_strength = druid.default_strength
+    druid.hp = druid.hero_stamina * 40
     druid.name_class = 'Друид'
     druid.save()
     return redirect('index')
@@ -82,6 +84,7 @@ def create_warrior(request):
     warrior.hero_stamina = warrior.default_stamina
     warrior.hero_armor = warrior.default_armor
     warrior.hero_strength = warrior.default_strength
+    warrior.hp = warrior.hero_stamina * 40
     warrior.name_class = 'Воин'
     warrior.save()
     return redirect('index')
@@ -99,8 +102,6 @@ def create_things(request):
 
 def person_detail(request, hero_id):
     person = get_object_or_404(Heroes, id=hero_id)
-    person.hp = person.hero_stamina * 40
-    person.save()
     things = person.things.all()
     return render(request, 'person_detail.html', {'person': person,
                                                   'things': things})
@@ -164,10 +165,22 @@ def arena(request, hero1_id, hero2_id):
                           f'осталось пунктов жизни')
         if defender.hp < 0:
             defender.alive = 0
+            defender.count_death += 1
             defender.save()
             break
     win_log.append(f'{defender} умирает --- победил {attacker}')
     win_log.append(f'У {attacker} осталось {round(attacker.hp)} жизни')
+    attacker.count_wins += 1
+    attacker.hp = attacker.hero_stamina * 40
+    attacker.save()
     return render(request, 'arena.html', {'person_list': list_pair,
                                           'logs': battle_log,
                                           'win_log': win_log})
+
+
+def resurrection(request, hero_id):
+    hero = get_object_or_404(Heroes, id=hero_id)
+    hero.hp = hero.hero_stamina * 40
+    hero.alive = 1
+    hero.save()
+    return redirect('person_detail', hero_id)

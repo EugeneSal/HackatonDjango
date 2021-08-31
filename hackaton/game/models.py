@@ -10,6 +10,8 @@ class Heroes(models.Model):
     hero_armor = models.IntegerField(default=30)
     hp = models.IntegerField(default=1000)
     alive = models.BooleanField(default=True)
+    count_death = models.IntegerField(default=0)
+    count_wins = models.IntegerField(default=0)
 
     class Meta:
         ordering = ('name_class',)

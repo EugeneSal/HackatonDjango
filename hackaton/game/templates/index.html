@@ -19,9 +19,11 @@
                 Выносливость: {{ person.hero_stamina }}<br>
                 Защита: {{ person.hero_armor }}<br>
                 Здоровье: {{ person.hp }}<br>
-                Статус: {% if person.alive %} Живой
-                {% else %} Погиб
-                {% endif %}
+                Статус: {% if person.alive %} <a class="alert-primary">Живой</a>
+                {% else %} <a class="alert-danger">Погиб</a>
+                {% endif %}<br>
+                Всего Смертей: {{ person.count_death }}<br>
+                Всего Побед: {{ person.count_wins }}
 
               </a>
             </div>

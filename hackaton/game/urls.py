@@ -22,4 +22,6 @@ urlpatterns = [
          name='create_druid'),
     path('create_things/', create_things,
          name='create_things'),
+    path('resurrection/<int:hero_id>/', resurrection,
+         name='resurrection'),
 ]

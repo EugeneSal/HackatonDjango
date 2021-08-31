@@ -4,11 +4,18 @@
 {% block content %}
   <div class="container">
 
-    <p>{{ person.name }} {{ person.nick_name }}</p>
+    <p>{{ person.name }} {{ person.nick_name }}
+      {% if person.alive == 0 %}
+      <a href="{% url 'resurrection' person.id %}" role="button">
+        <i class="fa fa-plus-square" aria-hidden="true">Воскресить</i>
+      </a>
+    {% endif %}
+    </p>
     <p>
-      Сила: {{ person.hero_strength }}
-      Выносливость: {{ person.hero_stamina }}
-      Защита: {{ person.hero_armor }}
+      Сила: {{ person.hero_strength }}<br>
+      Выносливость: {{ person.hero_stamina }}<br>
+      Защита: {{ person.hero_armor }}<br>
+      Здоровье: {{ person.hp }}
     </p>
     <hr>
     Инвентарь:
