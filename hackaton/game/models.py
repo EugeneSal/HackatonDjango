@@ -66,7 +66,7 @@ class Things(models.Model):
     thing_strength = models.IntegerField()
     thing_stamina = models.IntegerField()
     thing_armor = models.IntegerField()
-    used = models.BooleanField(default=None)
+    used = models.BooleanField(default=0)
 
     def __str__(self):
         return f'{self.name} {self.name_class}'

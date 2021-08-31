@@ -3,12 +3,12 @@ import random as r
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import PaladinForm, WarriorForm, DruidForm
+from .forms import PaladinForm, WarriorForm, DruidForm, ThingsForm
 from .models import *
 
 
 def put_on_inventory(request, hero_id, thing_id):
-    person = get_object_or_404(Paladin, id=hero_id)
+    person = get_object_or_404(Heroes, id=hero_id)
     thing = get_object_or_404(Things, id=thing_id)
     if thing.used == 1:
         return redirect('person_detail', hero_id)
@@ -23,7 +23,7 @@ def put_on_inventory(request, hero_id, thing_id):
 
 
 def take_off_inventory(request, hero_id, thing_id):
-    person = get_object_or_404(Paladin, id=hero_id)
+    person = get_object_or_404(Heroes, id=hero_id)
     thing = get_object_or_404(Things, id=thing_id)
     if thing.used == 0:
         return redirect('person_detail', hero_id)
@@ -48,8 +48,8 @@ def index(request):
 def create_paladin(request):
     form = PaladinForm(request.POST or None)
     if request.method == 'GET' or not form.is_valid():
-        return render(request, 'create_hero.html',
-                      {'form': form})
+        return render(request, 'create.html',
+                      {'form': form, 'hero': True})
     paladin = form.save(commit=False)
     paladin.hero_stamina = paladin.default_stamina
     paladin.hero_armor = paladin.default_armor
@@ -62,8 +62,8 @@ def create_paladin(request):
 def create_druid(request):
     form = DruidForm(request.POST or None)
     if request.method == 'GET' or not form.is_valid():
-        return render(request, 'create_hero.html',
-                      {'form': form})
+        return render(request, 'create.html',
+                      {'form': form, 'hero': True})
     druid = form.save(commit=False)
     druid.hero_stamina = druid.default_stamina
     druid.hero_armor = druid.default_armor
@@ -76,14 +76,24 @@ def create_druid(request):
 def create_warrior(request):
     form = WarriorForm(request.POST or None)
     if request.method == 'GET' or not form.is_valid():
-        return render(request, 'create_hero.html',
-                      {'form': form})
+        return render(request, 'create.html',
+                      {'form': form, 'hero': True})
     warrior = form.save(commit=False)
     warrior.hero_stamina = warrior.default_stamina
     warrior.hero_armor = warrior.default_armor
     warrior.hero_strength = warrior.default_strength
     warrior.name_class = 'Воин'
     warrior.save()
+    return redirect('index')
+
+
+def create_things(request):
+    form = ThingsForm(request.POST or None)
+    if request.method == 'GET' or not form.is_valid():
+        return render(request, 'create.html',
+                      {'form': form, 'hero': False})
+    thing = form.save(commit=False)
+    thing.save()
     return redirect('index')
 
 

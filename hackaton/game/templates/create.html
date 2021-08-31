@@ -1,6 +1,10 @@
 {% extends "misc/base.html" %}
 {% block title %}
-  Создать персонажа
+  {% if hero == True %}
+    Создать персонажа
+  {% else %}
+    Создать Предмет
+  {% endif %}
 {% endblock %}
 {% block content %}
   <main role="main" class="container">
@@ -8,7 +12,11 @@
       <div class="col-md-7 mb-3 mt-1">
         <div class="card">
           <div class="card-header">
-            Создать персонажа
+            {% if hero == True %}
+              Создать персонажа
+            {% else %}
+              Создать Предмет
+            {% endif %}
           </div> <!--"card-header" -->
           <div class="card-body">
             <form method="post" enctype="multipart/form-data">
@@ -33,7 +41,11 @@
               {% endfor %}
               <div class="col-md-6 offset-md-8 mr-1">
                 <button type="submit" class="btn btn-primary ml-1 mr-1">
-                  Создать персонажа
+                  {% if hero == True %}
+                    Создать персонажа
+                  {% else %}
+                    Создать Предмет
+                  {% endif %}
                 </button>
               </div> <!-- "col-md-5 offset-md-11"-->
             </form>

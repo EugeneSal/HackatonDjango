@@ -20,4 +20,6 @@ urlpatterns = [
          name='create_warrior'),
     path('create_druid/', create_druid,
          name='create_druid'),
+    path('create_things/', create_things,
+         name='create_things'),
 ]
