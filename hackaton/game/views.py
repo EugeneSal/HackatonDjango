@@ -109,6 +109,8 @@ def person_detail(request, hero_id):
 def choice_the_pair(request):
     person_list = Heroes.objects.all()
     list_person = []
+    if len(person_list) < 2:
+        return redirect('index')
     for i in range(len(person_list)):
         list_person.append(person_list[i])
     list_pair = []
