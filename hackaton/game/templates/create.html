@@ -34,9 +34,12 @@
                      aria-required={{ field.field.required }}>
                   <label for="{{ field.id_for_label }}"
                          class="col-md-12 col-form-label text-md-right">
-                    {{ field.label }}{% if field.required %}
+                    {{ field.label }}
+                    {% if field.required %}
                       <span class="required">*
-                                </span>{% endif %}</label>
+                      </span>
+                    {% endif %}
+                  </label>
                   <div class="col-md-12">
                     {{ field }}
                     {% if field.help_text %}
